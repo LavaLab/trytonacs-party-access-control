@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<tree string="Badges">
+  <field name="party"/>
+  <field name="code"/>
+  <field expand="1" name="description"/>
+</tree>
