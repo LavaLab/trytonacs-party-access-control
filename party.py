@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 '''
-    trytonlls_party_access_control.py
+    trytonacs_party_access_control.py
 
     :copyright: The file COPYRIGHT at the top level of this
     :repository contains the full copyright notices.
@@ -20,18 +20,19 @@ class Party:
 
     badges = fields.One2Many('access.control.badge', 'party', 'Badge')
 
+
 class Badge(ModelSQL, ModelView):
     "Badge"
     __name__ = 'access.control.badge'
     _rec_name = 'code'
 
-    code = fields.Char('Code', select=True, required=True )
-    disabled = fields.Boolean('Disabled', )
-    description = fields.Char('Description' )
+    code = fields.Char('Code', select=True, required=True)
+    disabled = fields.Boolean('Disabled')
+    description = fields.Char('Description')
     party = fields.Many2One(
         'party.party', 'Party', ondelete='CASCADE', select=True, required=True
     )
-    
+
     @classmethod
     def __setup__(cls):
         super(Badge, cls).__setup__()
@@ -44,4 +45,3 @@ class Badge(ModelSQL, ModelView):
     @classmethod
     def default_disabled(cls):
         return False
-

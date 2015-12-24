@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    trytonlls_party_access_control
+    trytonacs_party_access_control
 
     :copyright: (c) The file COPYRIGHT at the top level of this
     :repository contains the full copyright notices.
@@ -9,6 +9,7 @@
 import unittest
 from .test_party import PartyTestCase
 import trytond.tests.test_tryton
+
 
 def suite():
     """

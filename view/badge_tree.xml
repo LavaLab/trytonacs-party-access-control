@@ -2,5 +2,6 @@
 <tree string="Badges">
   <field name="party"/>
   <field name="code"/>
+  <field name="disbaled"/>
   <field expand="1" name="description"/>
 </tree>

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    trytonlls_party_access_control
+    trytonacs_party_access_control
 
     :copyright: (c) The file COPYRIGHT at the top level of this
     :repository contains the full copyright notices.
@@ -29,13 +29,15 @@ class TestViewsDepends(unittest.TestCase):
         Set up data used in the tests.
         this method is called before each test function execution.
         """
-        trytond.tests.test_tryton.install_module('trytonlls_party_access_control')
+        trytond.tests.test_tryton.install_module(
+            'trytonacs_party_access_control'
+        )
 
     def test0005views(self):
         '''
         Test views.
         '''
-        test_view('trytonlls_party_access_control')
+        test_view('trytonacs_party_access_control')
 
     def test0006depends(self):
         '''

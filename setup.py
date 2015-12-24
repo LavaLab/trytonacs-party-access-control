@@ -3,11 +3,8 @@
 # this repository contains the full copyright notices and license terms.
 import re
 import os
-import time
-import sys
-import unittest
 import ConfigParser
-from setuptools import setup, Command
+from setuptools import setup
 
 
 def read(fname):
