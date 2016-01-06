@@ -28,7 +28,7 @@
             <field name="act_window" ref="act_badge_window"/>
         </record>
 
-	   <menuitem parent="menu_party" sequence="10"  
+	   <menuitem parent="party.menu_party" sequence="10"  
              action="act_badge_window" id="menu_badge_tree"/>
     </data>
 </tryton>
