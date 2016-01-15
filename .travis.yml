@@ -3,3 +3,6 @@ install:
   - pip install tox 
 script:
   - tox --skip-missing-interpreters
+env:
+  - DB_NAME=:memory:
+  - TRYTOND_DATABASE_URI=sqlite://
