@@ -48,9 +48,9 @@ class Badge(ModelSQL, ModelView):
         super(Badge, cls).__setup__()
         cls._order.insert(0, ('code', 'ASC'))
         cls._error_messages.update({
-                'duplicate_code': 'Duplicate badge code "%(code)s"',
-                'timeout': 'Could not find available code',
-                })
+            'duplicate_code': 'Duplicate badge code "%(code)s"',
+            'timeout': 'Could not find available code',
+            })
 
     @classmethod
     def default_disabled(cls):
@@ -71,9 +71,9 @@ class Badge(ModelSQL, ModelView):
                 while True:
                     code = cls.generate_code()
                     same = cls.search([
-                            ('code', '=', code),
-                            ('disabled', '=', False),
-                            ])
+                        ('code', '=', code),
+                        ('disabled', '=', False),
+                        ])
                     if not same:
                         break
                     now = time.time()
@@ -89,12 +89,13 @@ class Badge(ModelSQL, ModelView):
 
         super(Badge, cls).validate(badges)
 
-        cursor.execute(*table.select(table.code,
-                where=table.disabled == False,
-                group_by=table.code,
-                having=Count(table.id) > 1))
+        cursor.execute(*table.select(
+            table.code,
+            where=table.disabled == False,
+            group_by=table.code,
+            having=Count(table.id) > 1))
         code = cursor.fetchone()
         if code:
             cls.raise_user_error('duplicate_code', {
-                    'code': code,
-                    })
+                'code': code,
+                })
