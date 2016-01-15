@@ -3,6 +3,3 @@ install:
   - pip install tox 
 script:
   - tox --skip-missing-interpreters
-  notifications:
-  	email:
-  	-ci-notify@lavalab.com.au
