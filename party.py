@@ -58,7 +58,7 @@ class Badge(ModelSQL, ModelView):
 
     @classmethod
     def generate_code(cls):
-        return ''.join(str(random.randint(0, 9)) for i in xrange(code_size))
+        return ''.join(str(random.randint(1, 9)) for i in xrange(code_size))
 
     @classmethod
     def create(cls, vlist):
