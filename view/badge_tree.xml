@@ -3,5 +3,6 @@
   <field name="party"/>
   <field name="code"/>
   <field name="disabled"/>
+  <field name="enable_from"/>
   <field expand="1" name="description"/>
 </tree>

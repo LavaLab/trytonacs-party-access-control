@@ -12,7 +12,7 @@ import time
 
 from sql.aggregate import Count
 
-from trytond.pool import PoolMeta
+from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.config import config
 from trytond.transaction import Transaction
@@ -42,6 +42,7 @@ class Badge(ModelSQL, ModelView):
     party = fields.Many2One(
         'party.party', 'Party', ondelete='CASCADE', select=True, required=True
     )
+    enable_from = fields.Date('Enable From', select=True)
 
     @classmethod
     def __setup__(cls):
@@ -99,3 +100,22 @@ class Badge(ModelSQL, ModelView):
             cls.raise_user_error('duplicate_code', {
                 'code': code,
                 })
+
+    @classmethod
+    def enablebadges(cls):
+        """
+        Simple Cron method to set disabled field to false.
+        """
+        pool = Pool()
+        Date = pool.get('ir.date')
+        today = Date.today()
+        print '### enable badges'
+        print '## today %s' % today
+        badges = cls.search([
+                 ('disabled', '=', True),
+                 ('enable_from', '<=', today)
+             ])
+        for badge in badges:
+            badge.disabled = False
+            badge.enable_from = None
+            badge.save()

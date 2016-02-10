@@ -32,7 +32,20 @@
             <field name="act_window" ref="act_badge_window"/>
         </record>
 
-       <menuitem name="Badges" parent="party.menu_party" sequence="10"  
+        <menuitem name="Badges" parent="party.menu_party" sequence="10"  
              action="act_badge_window" id="menu_badge_tree" icon="tryton-list"/>
+
+        <record model="ir.cron" id="cron_enable_badge_on">
+            <field name="name">Update Badges that need to be enabled</field>
+            <field name="request_user" ref="res.user_admin"/>
+            <field name="user" ref="res.user_trigger"/>
+            <field name="active" eval="True"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="number_calls">-1</field>
+            <field name="repeat_missed" eval="False"/>
+            <field name="model">access.control.badge</field>
+            <field name="function">enablebadges</field>
+        </record>
     </data>
 </tryton>
